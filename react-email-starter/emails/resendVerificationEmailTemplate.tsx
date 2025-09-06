@@ -15,7 +15,7 @@ interface VerificationEmailProps {
   otp: string;
 }
 
-export default function resendVerifacationEmailTemplate({
+export default function ResendVerifacationEmailTemplate({
   username,
   otp,
 }: VerificationEmailProps) {
