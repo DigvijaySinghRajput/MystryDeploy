@@ -17,15 +17,25 @@ export const authoptions: NextAuthOptions = {
         },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials: any): Promise<any> {
-        dbConnect();
+      async authorize(credentials): Promise<{
+        id: string;
+        _id: string;
+        email: string;
+        username: string;
+        isverified: boolean;
+        isAcceptingMessages: boolean;
+      } | null> {
+        await dbConnect();
         try {
+          if (!credentials) {
+            throw new Error("Please provide login credentials");
+          }
           const user = await UserModel.findOne({
             $or: [
-              { email: credentials.identifier },
-              { username: credentials.identifier }, // making this future proof if incase username is used
+              { email: credentials?.email },
+              { username: credentials?.email }, // making this future proof if incase username is used
             ],
-          });
+          }).lean();
 
           if (!user) {
             throw new Error("No user found.Please check email");
@@ -44,9 +54,16 @@ export const authoptions: NextAuthOptions = {
             throw new Error("Enter correct password");
           }
 
-          return user;
-        } catch (err: any) {
-          throw new Error(err);
+          return {
+            id: user._id.toString(),
+            _id: user._id.toString(),
+            email: user.email,
+            username: user.username,
+            isverified: user.isverified,
+            isAcceptingMessages: user.isAcceptingMessages,
+          };
+        } catch (err: unknown) {
+          throw new Error(String(err));
         }
       },
     }),
@@ -59,7 +76,7 @@ export const authoptions: NextAuthOptions = {
       if (user) {
         token._id = user._id?.toString();
         token.isverified = user.isverified;
-        token.isAcceptingMessages = user.isAcceptingMessage;
+        token.isAcceptingMessages = user.isAcceptingMessages;
         token.username = user.username;
       }
       return token;
@@ -68,7 +85,7 @@ export const authoptions: NextAuthOptions = {
       if (token) {
         session.user._id = token._id;
         session.user.isverified = token.isverified;
-        session.user.isAcceptingMessage = token.isAcceptingMessage;
+        session.user.isAcceptingMessages = token.isAcceptingMessages;
         session.user.username = token.username;
       }
       return session;

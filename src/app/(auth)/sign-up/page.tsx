@@ -78,7 +78,7 @@ function SignUpPage() {
       console.log("Error in signup of user", error);
       const axiosError = error as AxiosError<ApiResponse>;
 
-      let errorMessage = axiosError.response?.data.message;
+      const errorMessage = axiosError.response?.data.message;
       toast("Signup failed", {
         description: errorMessage,
         className: "bg-red-600 text-black border border-red-700",

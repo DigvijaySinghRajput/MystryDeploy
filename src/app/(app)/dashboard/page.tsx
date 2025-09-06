@@ -44,8 +44,8 @@ function Dashboard() {
       toast("Error", {
         description: (
           <span className="text-foreground">
-            {axiosError.response?.data.message} || "Failed to fetch message
-            setting"
+            {axiosError.response?.data.message} || `Failed to fetch message
+            setting`
           </span>
         ),
         className: "bg-background text-black border border-red-700",
@@ -75,8 +75,8 @@ function Dashboard() {
         toast("Error", {
           description: (
             <span className="text-foreground">
-              {axiosError.response?.data.message} || "Failed to fetch message
-              setting"
+              {axiosError.response?.data.message} || `Failed to fetch message
+              setting`
             </span>
           ),
           className: "bg-background text-black border border-red-700",
@@ -107,8 +107,8 @@ function Dashboard() {
       toast("Error", {
         description: (
           <span className="text-black">
-            {axiosError.response?.data.message} || "Failed to fetch message
-            setting"
+            {axiosError.response?.data.message} || `Failed to fetch message
+            setting`
           </span>
         ),
         className: "bg-red-600 text-black border border-red-700",

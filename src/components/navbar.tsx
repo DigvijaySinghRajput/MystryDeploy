@@ -45,9 +45,9 @@ function Navbar() {
     <div>
       <nav className="fixed top-0 left-0 w-full z-50 p-4 md:p-6 shadow-md bg-background/100 dark:bg-background/100 text-foreground border-b border-border">
         <div className="container mx-auto flex relative justify-between md:flex-row items-center">
-          <a href="/" className="text-xl font-bold mb-4 md:mb-0 text-left">
+          <Link href="/" className="text-xl font-bold mb-4 md:mb-0 text-left">
             Mystry World
-          </a>
+          </Link>
 
           {session && (
             <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">

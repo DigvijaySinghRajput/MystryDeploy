@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbconnect";
-import UserModel from "@/model/User";
+import UserModel, { User } from "@/model/User";
 
 class TrieNode {
   data: string = "/0";
@@ -28,7 +28,7 @@ class Trie {
       if (curr.children[char]) {
         curr = curr.children[char];
       } else {
-        let child: TrieNode = new TrieNode(char);
+        const child: TrieNode = new TrieNode(char);
         curr.children[char] = child;
         curr = child;
       }
@@ -51,14 +51,14 @@ class Trie {
 
   collectword(prefix: string, curr: TrieNode, result: string[]) {
     if (curr.isTerminal) result.push(prefix);
-    for (let char in curr.children) {
-      let suggestion: TrieNode = curr.children[char];
+    for (const char in curr.children) {
+      const suggestion: TrieNode = curr.children[char];
       this.collectword(prefix + char, suggestion, result);
     }
   }
 
   userwithprefix(prefix: string): string[] {
-    let result: string[] = [];
+    const result: string[] = [];
     let curr: TrieNode = this.root;
     for (let i = 0; i < prefix.length; i++) {
       const char = prefix[i];
@@ -79,11 +79,11 @@ let cachedUserCount = 0;
 export async function GET(request: Request) {
   await dbConnect();
   try {
-    let currentUserCount = await UserModel.countDocuments();
+    const currentUserCount = await UserModel.countDocuments();
 
     if (!cachedTrie || currentUserCount > cachedUserCount) {
       const username: string[] = (await UserModel.find({}, "username")).map(
-        (user: any) => user.username
+        (user: User) => user.username
       );
       cachedTrie = new Trie();
       cachedUserCount = currentUserCount;
