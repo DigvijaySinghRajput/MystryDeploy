@@ -10,7 +10,7 @@ import { ApiResponse } from "@/types/ApiResponse";
 import ModeToggle from "./theme-toggle-button";
 import { Separator } from "@/components/ui/separator";
 
-function navbar() {
+function Navbar() {
   const { data: session } = useSession();
   const [isSearching, setIsSearching] = useState(false);
   const [searchedName, setSearchedName] = useState("");
@@ -129,4 +129,4 @@ function navbar() {
   );
 }
 
-export default navbar;
+export default Navbar;
