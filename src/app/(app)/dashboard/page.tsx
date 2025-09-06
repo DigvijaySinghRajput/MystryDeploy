@@ -149,7 +149,7 @@ function Dashboard() {
               type="text"
               value={profileUrl}
               disabled
-              className="input input-bordered w-2xs p-2 mr-2 border-2 border-border"
+              className="input input-bordered w-120 p-2 mr-2 border-2 border-border"
             />
             <Button onClick={copyToClipboard}>Copy</Button>
           </div>
