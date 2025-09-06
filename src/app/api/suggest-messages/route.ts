@@ -7,7 +7,7 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   try {
     const prompt =
-      "Generate a list of three short, uplifting and mysterious messages formatted as a single string. Each message should be separated by '||'. The messages may draw inspiration from motivation, devotion, meditation, exercise, or other positive aspects of life. They should feel poetic, cryptic, or spiritual — like anonymous notes that spark curiosity and encouragement without needing a reply. Avoid personal, sensitive, or offensive content. Keep each message exact between 15 22 words.";
+      "Generate a list of three short, uplifting and mysterious messages formatted as a single string. Each message should be separated by '||'. The messages may draw inspiration from motivation, devotion, meditation, exercise, or other positive aspects of life. They should feel poetic, cryptic, or spiritual — like anonymous notes that spark curiosity and encouragement without needing a reply. Avoid personal, sensitive, or offensive content. Keep each message exact between 7 12 words.";
 
     const result = streamText({
       model: google("gemini-2.5-flash"),
