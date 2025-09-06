@@ -32,7 +32,7 @@ const parseStringMessages = (messageString: string): string[] => {
   return messageString.split(specialChar);
 };
 
-function SendMessage() {
+function SendMessagePage() {
   const [issending, setIssending] = useState(false);
   const param = useParams<{ username: string }>();
   const {
@@ -189,4 +189,4 @@ function SendMessage() {
   );
 }
 
-export default SendMessage;
+export default SendMessagePage;

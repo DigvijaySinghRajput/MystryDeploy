@@ -22,7 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-function page() {
+function SignUpPage() {
   const [username, setUsername] = useState("");
   const [usernameMessage, setUsernameMessage] = useState("");
   const [isCheckingUsername, setIsCheckingUsername] = useState(false);
@@ -183,4 +183,4 @@ function page() {
   );
 }
 
-export default page;
+export default SignUpPage;

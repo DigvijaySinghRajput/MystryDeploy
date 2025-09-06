@@ -15,8 +15,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import MessageSkeleton from "@/components/messageSkeleton";
 import MessageCard from "@/components/message";
-import { string } from "zod";
-function page() {
+
+function Dashboard() {
   const [message, setMessage] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSwitchLoading, setIsSwitchLoading] = useState(false);
@@ -206,4 +206,4 @@ function page() {
   );
 }
 
-export default page;
+export default Dashboard;

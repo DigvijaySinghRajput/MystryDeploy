@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 
-function page() {
+function SignInPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
@@ -133,4 +133,4 @@ function page() {
   );
 }
 
-export default page;
+export default SignInPage;
