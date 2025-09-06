@@ -10,7 +10,7 @@ export const authoptions: NextAuthOptions = {
       id: "credentials",
       name: "Credentials",
       credentials: {
-        email: {
+        identifier: {
           label: "Email",
           type: "text",
           placeholder: "Enter Your Email",
@@ -32,8 +32,8 @@ export const authoptions: NextAuthOptions = {
           }
           const user = await UserModel.findOne({
             $or: [
-              { email: credentials?.email },
-              { username: credentials?.email }, // making this future proof if incase username is used
+              { email: credentials?.identifier },
+              { username: credentials?.identifier }, // making this future proof if incase username is used
             ],
           }).lean();
 
