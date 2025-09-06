@@ -3,7 +3,7 @@ import React from "react";
 import { Skeleton } from "./ui/skeleton";
 import { Card, CardHeader, CardTitle } from "./ui/card";
 
-function messageSkeleton() {
+function MessageSkeleton() {
   return (
     <Card className="shadow-md rounded-2xl">
       <CardHeader>
@@ -24,4 +24,4 @@ function messageSkeleton() {
   );
 }
 
-export default messageSkeleton;
+export default MessageSkeleton;
