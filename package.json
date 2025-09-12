@@ -1,12 +1,23 @@
 {
-  "name": "truefeedbacknext",
+  "name": "mystry-world",
   "version": "0.1.0",
   "private": true,
+  "author": "Digvijay <rajputdd15@gmail.com>",
+  "description": "Anonymous messaging platform built with Next.js and TypeScript",
+  "keywords": [
+    "nextjs",
+    "typescript",
+    "anonymous",
+    "messaging",
+    "mongodb",
+    "tailwindcss"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview": "next build && next start"
   },
   "dependencies": {
     "@ai-sdk/google": "^2.0.0",
