@@ -13,19 +13,23 @@ export async function sendverificationEmail(
   try {
     // used sendgrid instead of resend
     const emailService = process.env.EMAIL_SERVICE || "resend";
+    console.log("Email service being used:", emailService);
 
     if (emailService === "sendgrid") {
       // Use SendGrid - has good deliverability and won't go to spam
+      console.log("Setting SendGrid API key...");
       sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
-      await sgMail.send({
+      console.log("Sending email via SendGrid to:", email);
+      const result = await sgMail.send({
         to: email,
-        from: process.env.SENDGRID_FROM_EMAIL || "noreply@sendgrid.com",
+        from: process.env.SENDGRID_FROM_EMAIL || "MystryWorld@sendgrid.com",
         subject: "MystryWorld || Email Verification",
         html: await render(
           SendGridVerificationEmailTemplate({ username, otp: verifytoken })
         ),
       });
+      console.log("SendGrid response:", result);
     } else {
       // Use Resend with proper domain
       const fromEmail =
@@ -43,10 +47,11 @@ export async function sendverificationEmail(
       message: "Verification email sent successfully",
     };
   } catch (emailerror) {
-    console.log("Error while sending Verification Email", emailerror);
+    console.log("❌ Error while sending Verification Email:", emailerror);
+    console.log("Error details:", JSON.stringify(emailerror, null, 2));
     return {
       success: false,
-      message: "Error while sending Verification Email",
+      message: `Error while sending Verification Email: ${emailerror}`,
     };
   }
 }
