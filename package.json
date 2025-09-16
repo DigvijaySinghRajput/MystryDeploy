@@ -30,6 +30,8 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-switch": "^1.2.5",
     "@react-email/components": "^0.3.2",
+    "@react-email/render": "^1.2.3",
+    "@sendgrid/mail": "^8.1.5",
     "@uidotdev/usehooks": "^2.4.1",
     "ai": "^5.0.0",
     "axios": "^1.11.0",

@@ -19,7 +19,7 @@ A modern, full-stack anonymous messaging application built with Next.js 15, Type
 - **Dark/Light Theme**: Built-in theme switching with system preference detection
 - **Form Validation**: Comprehensive client and server-side validation with Zod
 - **Database Integration**: MongoDB with Mongoose ODM
-- **Email Service**: Resend integration for verification emails
+- **Email Service**: Resend and SendGrid integration for verification emails
 - **Type Safety**: Full TypeScript implementation
 - **Modern UI**: shadcn/ui components with Radix UI primitives
 
@@ -29,7 +29,7 @@ A modern, full-stack anonymous messaging application built with Next.js 15, Type
 
 - Node.js 18+
 - MongoDB database (local or cloud)
-- Resend API key for email functionality
+- Resend or SendGrid API key for email functionality
 
 ### Installation
 
@@ -53,7 +53,12 @@ A modern, full-stack anonymous messaging application built with Next.js 15, Type
    MONGODB_URI=your_mongodb_connection_string
    NEXTAUTH_SECRET=your_nextauth_secret_key
    NEXTAUTH_URL=http://localhost:3000
-   RESEND_API_KEY=your_resend_api_key
+
+   # Email Service (choose one)
+   EMAIL_SERVICE=resend  # or "sendgrid"
+   RESEND_API_KEY=your_resend_api_key  # if using Resend
+   SENDGRID_API_KEY=your_sendgrid_api_key  # if using SendGrid
+
    GOOGLE_GENERATIVE_AI_API_KEY=your_google_ai_key
    ```
 
@@ -110,7 +115,8 @@ src/
 - **MongoDB** - NoSQL database
 - **Mongoose** - MongoDB object modeling
 - **bcrypt** - Password hashing
-- **Resend** - Email service
+- **Resend** - Email service (with custom domain)
+- **SendGrid** - Email service (no domain required)
 
 ### AI Integration
 
