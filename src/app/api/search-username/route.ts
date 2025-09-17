@@ -5,13 +5,15 @@ class TrieNode {
   data: string = "/0";
   isTerminal: boolean = false;
   children: { [key: string]: TrieNode } = {};
+  originalWord?: string;
 
   constructor(char: string) {
     this.data = char;
   }
 
-  makeTerminal() {
+  makeTerminal(word: string) {
     this.isTerminal = true;
+    this.originalWord = word;
   }
 }
 
@@ -21,7 +23,7 @@ class Trie {
     this.root = new TrieNode("");
   }
 
-  userinsert(word: string) {
+  userinsert(word: string, originalWord: string) {
     let curr: TrieNode = this.root;
     for (let i = 0; i < word.length; i++) {
       const char = word[i];
@@ -33,7 +35,7 @@ class Trie {
         curr = child;
       }
     }
-    curr.makeTerminal();
+    curr.makeTerminal(originalWord);
   }
 
   usersearch(word: string): string {
@@ -50,7 +52,7 @@ class Trie {
   }
 
   collectword(prefix: string, curr: TrieNode, result: string[]) {
-    if (curr.isTerminal) result.push(prefix);
+    if (curr.isTerminal && curr.originalWord) result.push(curr.originalWord);
     for (const char in curr.children) {
       const suggestion: TrieNode = curr.children[char];
       this.collectword(prefix + char, suggestion, result);
@@ -88,12 +90,14 @@ export async function GET(request: Request) {
       cachedTrie = new Trie();
       cachedUserCount = currentUserCount;
       username.forEach((name) => {
-        cachedTrie?.userinsert(name);
+        cachedTrie?.userinsert(name.toLowerCase(), name);
       });
     }
 
     const { searchParams } = new URL(request.url);
-    const searchuser = searchParams.get("searchuser") || "";
+    const searchuser = (searchParams.get("searchuser") || "")
+      .trim()
+      .toLowerCase();
     const result = cachedTrie.userwithprefix(searchuser);
 
     return Response.json(
