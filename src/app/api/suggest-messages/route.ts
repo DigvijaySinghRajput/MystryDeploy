@@ -7,8 +7,7 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   try {
     const prompt =
-      "Generate a list of three short, uplifting and mysterious messages formatted as a single string. Each message should be separated by '||'. The messages may draw inspiration from motivation, devotion, meditation, exercise, or other positive aspects of life. They should feel poetic, cryptic, or spiritual — like anonymous notes that spark curiosity and encouragement without needing a reply. Avoid personal, sensitive, or offensive content. Keep each message exact between 7 12 words.";
-
+      "Generate exactly three short, uplifting, and slightly mysterious motivational quotes as a single string. Each quote should be separated by '||'. Draw inspiration from Premanand Ji Maharaj (devotion, meditation, inner strength), David Goggins (grit, discipline, mental toughness), and other motivational figures. The quotes should feel like anonymous notes that spark curiosity, resilience, and encouragement without requiring a reply. Each quote must be between 7 and 12 words, with each of the three quotes having a different length. Focus on themes such as devotion, discipline, grinding, pushing limits, meditation, or workout motivation.";
     const result = streamText({
       model: google("gemini-2.5-flash"),
       prompt: prompt,
