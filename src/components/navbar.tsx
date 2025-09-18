@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { ApiResponse } from "@/types/ApiResponse";
 import ModeToggle from "./theme-toggle-button";
-import { Separator } from "@/components/ui/separator";
 
 function Navbar() {
   const { data: session } = useSession();
