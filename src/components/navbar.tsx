@@ -94,7 +94,11 @@ function Navbar() {
                 <Button
                   className="bg-background text-foreground"
                   variant="outline"
-                  onClick={() => signOut()}
+                  onClick={() =>
+                    signOut({
+                      callbackUrl: "/",
+                    })
+                  }
                 >
                   Logout
                 </Button>

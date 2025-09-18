@@ -108,6 +108,14 @@ function SignInPage() {
                 </FormItem>
               )}
             />
+            <p>
+              <Link
+                href="/forgot-password"
+                className="text-blue-600 hover:text-blue-800"
+              >
+                Forgot Password
+              </Link>
+            </p>
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
