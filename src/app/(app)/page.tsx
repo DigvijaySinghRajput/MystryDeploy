@@ -8,7 +8,7 @@ import {
 import { Mail } from "lucide-react";
 import messages from "@/messages.json";
 import Autoplay from "embla-carousel-autoplay";
-import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 export default function Home() {
   const words = [
@@ -38,7 +38,7 @@ export default function Home() {
       <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-background text-foreground">
         <section className="text-center mb-8 md:mb-12">
           <h1 className="text-3xl md:text-5xl font-bold text-center">
-            <TypewriterEffect words={words} />
+            <TypewriterEffectSmooth words={words} />
           </h1>
         </section>
         <Carousel
