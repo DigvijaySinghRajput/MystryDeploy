@@ -72,9 +72,7 @@ function ForgotPasswordPage() {
         description: response.data.message,
       });
       if (response.status === 201)
-        router.replace(
-          `/reset-password?email=${encodeURIComponent(data.email)}`
-        );
+        router.replace(`/reset-password/${encodeURIComponent(data.email)}`);
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
       toast("Verification failed", {

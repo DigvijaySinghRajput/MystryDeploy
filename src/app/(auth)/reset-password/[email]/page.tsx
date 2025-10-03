@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useState } from "react";
 import { toast } from "sonner";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { resetPasswordSchema } from "@/schemas/resetPasswordSchema";
 import { LoaderCircle } from "lucide-react";
 import {
@@ -26,8 +26,8 @@ function ResetPassword() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
-  const searchParam = useSearchParams();
-  const email = searchParam.get("email");
+  const searchParam = useParams<{ email: string }>();
+  const email = decodeURIComponent(searchParam.email);
   //zod implementation
   const form = useForm<z.infer<typeof resetPasswordSchema>>({
     resolver: zodResolver(resetPasswordSchema),
