@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const expiryDate = new Date(); // this new gives an object and it dosent matter whether object is const or var
-      expiryDate.setHours(expiryDate.getHours() + 1);
+      expiryDate.setMinutes(expiryDate.getMinutes() + 15);
 
       const newUser = new UserModel({
         username,

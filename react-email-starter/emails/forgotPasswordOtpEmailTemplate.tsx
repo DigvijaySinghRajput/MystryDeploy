@@ -15,14 +15,14 @@ interface VerificationEmailProps {
   otp: string;
 }
 
-export default function ResendVerificationEmailTemplate({
+export default function ForgotPasswordOtpEmailTemplate({
   username,
   otp,
 }: VerificationEmailProps) {
   return (
     <Html lang="en" dir="ltr">
       <Head>
-        <title>Account Verification Code</title>
+        <title>Password Reset OTP</title>
         <Font
           fontFamily="Roboto"
           fallbackFontFamily="Verdana"
@@ -35,10 +35,8 @@ export default function ResendVerificationEmailTemplate({
         />
       </Head>
 
-      {/* Preview text */}
-      <Preview>
-        Complete your registration with this verification code: {otp}
-      </Preview>
+      {/* Preview text — shown in email inbox */}
+      <Preview>You requested a password reset. Your OTP is: {otp}</Preview>
 
       <Section style={{ padding: "20px", fontFamily: "Roboto, Verdana" }}>
         <Row>
@@ -47,8 +45,8 @@ export default function ResendVerificationEmailTemplate({
 
         <Row>
           <Text>
-            Thank you for registering. Please use the following One-Time
-            Password (OTP) to complete your account verification:
+            You have requested to reset your password. Please use the following
+            One-Time Password (OTP) to proceed:
           </Text>
         </Row>
 
@@ -60,18 +58,18 @@ export default function ResendVerificationEmailTemplate({
 
         <Row>
           <Text>
-            This code will expire in 15 minutes for security purposes. If you
-            did not request this verification, please ignore this email.
+            This OTP will expire in 5 minutes for security reasons. If you did
+            not request this, please ignore this email.
           </Text>
         </Row>
 
-        {/* Optional button for verification page */}
+        {/* Optional button link for verification page */}
         {/* <Row>
           <Button
-            href={`http://localhost:3000/verify/${username}`}
+            href={`http://localhost:3000/reset-password/${username}`}
             style={{ backgroundColor: "#007BFF", color: "#ffffff" }}
           >
-            Verify Account
+            Reset Password
           </Button>
         </Row> */}
       </Section>

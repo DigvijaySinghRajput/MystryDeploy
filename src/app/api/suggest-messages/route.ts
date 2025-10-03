@@ -7,7 +7,7 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   try {
     const prompt =
-      "Generate exactly three short, uplifting, and slightly mysterious motivational quotes as a single string. Each quote should be separated by '||'. Draw inspiration from Premanand Ji Maharaj (devotion, meditation, inner strength), David Goggins (grit, discipline, mental toughness), and other motivational figures. The quotes should feel like anonymous notes that spark curiosity, resilience, and encouragement without requiring a reply. Each quote must be between 7 and 12 words, with each of the three quotes having a different length. Focus on themes such as devotion, discipline, grinding, pushing limits, meditation, or workout motivation.";
+      "Generate exactly three short, uplifting, and slightly mysterious motivational quotes as a single, unformatted string. Each quote must be separated by '||'. INSPIRATION SOURCES: Draw specifically from the most viral, highly viewed YouTube quotes concerning: David Goggins (discipline, grind, mental toughness), workout/grind motivation (no excuses), and Lord Krishna/Bhagavad Gita (duty, devotion, inner self). STYLE: Use simple, direct language and strictly avoid all poetic, figurative, or flowery phrasing. The output must resemble an anonymous, clean note. CONSTRAINTS: Each quote must be between 7 and 12 words. The three quotes must all have different word counts.";
     const result = streamText({
       model: google("gemini-2.5-flash"),
       prompt: prompt,
